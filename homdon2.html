@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Price Reads - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Image with Blur */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('book2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: white;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .homepage-container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .homepage-container h1 {
+            color:(rgba(243, 235, 236, 0.998));
+
+
+        }
+
+        .category-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .category img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .books-section {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .book {
+            background-color: #222;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            width: 150px;
+        }
+
+        .book img {
+            width: 120px;
+            height: 180px;
+            border-radius: 5px;
+        }
+
+        .book p {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .bottom-nav {
+            width: 100%;
+            background: linear-gradient(to right, #8B0000, #FF0000);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .bottom-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bottom-nav img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search by Title, Author, Publisher...">
+    </div>
+    
+    <a href="login1.html" class="login-btn">Login</a>
+    
+    <div class="homepage-container">
+        <h1>Half Price Reads</h1>
+        <div class="category-section">
+            <div class="category" onclick="location.href='bestseller.html'">
+                <img src="images.png" alt="new arrivals">
+                <p>New arrivals</p>
+            </div>
+            <div class="category" onclick="location.href='boxsets.html'">
+                <img src="box.jpeg" alt="Box Sets">
+                <p>BOX SETS</p>
+            </div>
+            <div class="category" onclick="location.href='international.html'">
+                <img src="images2.jpg" alt="International Best Seller">
+                <p>40% Discount Book</p>
+            </div>
+            <div class="category" onclick="location.href='newarrivals.html'">
+                <img src="img3.jpg" alt="New Arrivals">
+                <p>Old books-section</p>
+            </div>
+        </div>
+        <div class="books-section">
+            <div class="book">
+                <img src="maths.png" alt="Mathematics">
+                <p>Mathematics</p>
+            </div>
+            <div class="book">
+                <img src="Screenshot 2025-03-10 192956.png" alt="Chemistry">
+                <p>Chemistry</p>
+            </div>
+            <div class="book">
+                <img src="Screenshot 2025-03-10 193121.png" alt="Physics">
+                <p>Physics</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-nav">
+        <a href="">
+            <img src="images.png" alt="Home">
+            Home
+        </a>
+        <a href="account.html">
+            <img src="account.jpeg" alt="Account">
+            Account
+        </a>
+        <a href="wishlist.html">
+            <img src="wishlist.jpeg" alt="Wishlist">
+            Wishlist
+        </a>
+        <a href="#">
+            <img src="cha.jpeg" alt="Cart">
+            Cart
+        </a>
+        <a href="#">
+            <img src="catego.jpg" alt="Categories">
+            Categories
+        </a>
+    </div>
+</body>
+</html>

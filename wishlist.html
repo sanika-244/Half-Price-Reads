@@ -1,0 +1,323 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bucketlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #8B4513; /* Soil color */
+            color: white;
+            position: relative;
+        }
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 15px;
+            background-color: #252322;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .wishlist-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #654321; /* Darker soil color for contrast */
+            margin: auto;
+            margin-top: 50px;
+        }
+        .wishlist-item {
+            padding: 10px;
+            border-bottom: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <button class="home-button" onclick="goToHomePage()">Back</button>
+    <div class="wishlist-container">
+        <h2>Your Bucketlist (*_*)</h2>
+        <div id="wishlist"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            let wishlistContainer = document.getElementById("wishlist");
+            
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = "<p>No books in your bucketlist.</p>";
+            } else {
+                wishlist.forEach(book => {
+                    let bookElement = document.createElement("div");
+                    bookElement.classList.add("wishlist-item");
+                    bookElement.textContent = book;
+                    wishlistContainer.appendChild(bookElement);
+                });
+            }
+        });
+        
+        function goToHomePage() {
+            window.location.href = "homepage.html"; // Change to your actual home page URL
+        }
+    </script>
+</body>
+</html-->
+
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bucketlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #8B4513; /* Soil color */
+      color: white;
+      position: relative;
+    }
+    .home-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      background-color: #252322;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .wishlist-container {
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #654321; /* Darker soil color for contrast */
+      margin: auto;
+      margin-top: 50px;
+    }
+    .wishlist-item {
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="goToHomePage()">Back</button>
+
+  <div class="wishlist-container">
+    <h2>Your Bucketlist (*_*)</h2>
+    <div id="wishlist"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+      let wishlistContainer = document.getElementById("wishlist");
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>No books in your bucketlist.</p>";
+      } else {
+        wishlist.forEach(book => {
+          let bookElement = document.createElement("div");
+          bookElement.classList.add("wishlist-item");
+          bookElement.textContent = book;
+          wishlistContainer.appendChild(bookElement);
+        });
+      }
+    });
+
+    function goToHomePage() {
+      window.location.href = "homepage.html"; // Change to your actual home page URL
+    }
+  </script>
+</body>
+</html-->
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Wishlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #8B4513; /* Soil color */
+      color: white;
+      position: relative;
+    }
+    .home-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      background-color: #252322;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .wishlist-container {
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #654321;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .wishlist-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+    .remove-button {
+      background-color: #ff4444;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="goToHomePage()">Back</button>
+
+  <div class="wishlist-container">
+    <h2>Your Wishlist 📚</h2>
+    <div id="wishlist"></div>
+  </div>
+
+  <script>
+    function renderWishlist() {
+      const wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+      const wishlistContainer = document.getElementById("wishlist");
+      wishlistContainer.innerHTML = "";
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>No books in your wishlist.</p>";
+      } else {
+        wishlist.forEach((book, index) => {
+          const bookElement = document.createElement("div");
+          bookElement.classList.add("wishlist-item");
+
+          const titleSpan = document.createElement("span");
+          titleSpan.textContent = book;
+
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "Remove";
+          removeBtn.classList.add("remove-button");
+          removeBtn.onclick = function () {
+            removeFromWishlist(index);
+          };
+
+          bookElement.appendChild(titleSpan);
+          bookElement.appendChild(removeBtn);
+          wishlistContainer.appendChild(bookElement);
+        });
+      }
+    }
+
+    function removeFromWishlist(index) {
+      let wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+      wishlist.splice(index, 1);
+      localStorage.setItem("wishlistBooks", JSON.stringify(wishlist));
+      renderWishlist();
+    }
+
+    function goToHomePage() {
+      window.location.href = "homepage.html"; // Adjust as needed
+    }
+
+    // Render wishlist on page load
+    document.addEventListener("DOMContentLoaded", renderWishlist);
+  </script>
+</body>
+</html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bucketlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #8B4513;
+      color: white;
+      position: relative;
+    }
+    .home-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 15px;
+      background-color: #252322;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .wishlist-container {
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      background-color: #654321;
+      margin: auto;
+      margin-top: 50px;
+    }
+    .wishlist-item {
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+  <button class="home-button" onclick="goToHomePage()">Back</button>
+
+  <div class="wishlist-container">
+    <h2>Your Bucketlist (*_*)</h2>
+    <div id="wishlist"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+      let wishlistContainer = document.getElementById("wishlist");
+
+      if (wishlist.length === 0) {
+        wishlistContainer.innerHTML = "<p>No books in your bucketlist.</p>";
+      } else {
+        wishlist.forEach(book => {
+          let bookElement = document.createElement("div");
+          bookElement.classList.add("wishlist-item");
+          bookElement.innerHTML = `<strong>${book.title}</strong><br>Author: ${book.author}<br>Price: ₹${book.price}`;
+          wishlistContainer.appendChild(bookElement);
+        });
+      }
+    });
+
+    function goToHomePage() {
+      window.location.href = "homepage.html";
+    }
+  </script>
+</body>
+</html>
+

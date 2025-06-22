@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #8B4513; /* Soil color */
+            color: white;
+            position: relative;
+        }
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 15px;
+            background-color: #A0522D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .categories-container {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #654321; /* Darker soil color for contrast */
+            margin: auto;
+            margin-top: 50px;
+        }
+        .category-item {
+            padding: 10px;
+            border-bottom: 1px solid white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <button class="home-button" onclick="goToHomePage()">Back</button>
+    <div class="categories-container">
+        <h2>Categories</h2>
+        <div class="category-item">📖 Books</div>
+        <div class="category-item">🆕 New Arrivals</div>
+        <div class="category-item">📦 Box Sets</div>
+        <div class="category-item">🔥 Bestsellers</div>
+        <div class="category-item">🏆 Award Winners</div>
+        <div class="category-item">✍️ Book Required</div>
+        <div class="category-item">🎁 Today's Deal</div>
+        <div class="category-item">📩 Request Books</div>
+    </div>
+
+    <script>
+        function goToHomePage() {
+            window.location.href = "homepage.html"; // Change to your actual home page URL
+        }
+    </script>
+</body>
+</html>

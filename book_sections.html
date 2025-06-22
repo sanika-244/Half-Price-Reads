@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Sections</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .header {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+      position: relative;
+    }
+
+    .book-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+      justify-content: center;
+    }
+    .book {
+      width: 200px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .book img { width: 100%; height: auto; }
+    
+    .price { color: green; font-weight: bold; }
+    section { display: none; }
+    section:target { display: block; }
+  </style>
+</head>
+<body>
+
+<section id="newbooks">
+  <div class="header">
+    New Books
+  </div>
+  <div class="book-container">
+    <div class="book" onclick="openBuyPage('BRAHMASTRA', 500)">
+      <img src="brambook.jpeg" alt="BRAHMASTRA">
+      <h4>BRAHMASTRA</h4>
+      <p>Sovin Yadav</p>
+      <p class="price">&#8377;500</p>
+    </div>
+    <div class="book" onclick="openBuyPage('Biology', 700)">
+      <img src="biocet.png" alt="Biology">
+      <h4>Biology</h4>
+      <p>Mukesh Rahne</p>
+      <p class="price">&#8377;700</p>
+    </div>
+    <div class="book" onclick="openBuyPage('Chemistry', 500)">
+      <img src="chem2.jpeg" alt="Chemistry">
+      <h4>Chemistry</h4>
+      <p>Siya Patil</p>
+      <p class="price">&#8377;500</p>
+    </div>
+    <div class="book-container">
+    <div class="book" onclick="openBuyPage('Biology', 600)">
+      <img src="bio.jpg" alt="Biology">
+      <h4>Discount Book 1</h4><p>ram patil</p><p class="price">&#8377;600</p>
+    </div>
+    <div class="book" onclick="openBuyPage('Mathematics book', 700)">
+      <img src="mt.jpg" alt="Mathematics book">
+      <h4>Discount Book 2</h4><p>kishori sharma</p><p class="price">&#8377;700</p>
+    </div>
+    <div class="book-container">
+    <div class="book" onclick="openBuyPage('Physics', 250)">
+      <img src="phy3.jpeg" alt="Physics">
+      <h4>Mathematics2024</h4><p>dinesh yadav</p><p class="price">&#8377;250</p>
+    </div>
+    <div class="book" onclick="openBuyPage('maths', 300)">
+      <img src="mtg.jpg" alt="maths">
+      <h4>Old Book 2</h4><p>rahul mali</p><p class="price">&#8377;300</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="boxsets">
+  <div class="header">
+    Box Sets
+  </div>
+  <div class="book-container">
+    <div class="book" onclick="openBuyPage('Biology2024', 1000)">
+      <img src="entran.jpg" alt="Biology2024">
+      <h4>Box Set 1</h4><p>Raj patil</p><p class="price">&#8377;1000</p>
+    </div>
+    <div class="book" onclick="openBuyPage('Chemistry', 1200)">
+      <img src="chem2.jpeg" alt="Chemistry">
+      <h4>Box Set 2</h4><p>rahul kadam</p><p class="price">&#8377;1200</p>
+    </div>
+    <div class="book-container">
+    <div class="book" onclick="openBuyPage('Physics', 250)">
+      <img src="phy3.jpeg" alt="Physics">
+      <h4>Mathematics2024</h4><p>dinesh yadav</p><p class="price">&#8377;250</p>
+    </div>
+    <div class="book" onclick="openBuyPage('maths', 300)">
+      <img src="mtg.jpg" alt="maths">
+      <h4>Old Book 2</h4><p>rahul mali</p><p class="price">&#8377;300</p>
+    </div>
+  </div>
+</section>
+
+<section id="discount">
+  <div class="header">
+    40% Discount Books
+  </div>
+  <div class="book-container">
+    <div class="book" onclick="openBuyPage('Biology', 600)">
+      <img src="bio.jpg" alt="Biology">
+      <h4>Discount Book 1</h4><p>ram patil</p><p class="price">&#8377;600</p>
+    </div>
+    <div class="book" onclick="openBuyPage('Mathematics book', 700)">
+      <img src="mt.jpg" alt="Mathematics book">
+      <h4>Discount Book 2</h4><p>kishori sharma</p><p class="price">&#8377;700</p>
+    </div>
+    <div class="book-container">
+    <div class="book" onclick="openBuyPage('Physics', 250)">
+      <img src="phy3.jpeg" alt="Physics">
+      <h4>Mathematics2024</h4><p>dinesh yadav</p><p class="price">&#8377;250</p>
+    </div>
+    <div class="book" onclick="openBuyPage('maths', 300)">
+      <img src="mtg.jpg" alt="maths">
+      <h4>Old Book 2</h4><p>rahul mali</p><p class="price">&#8377;300</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="oldbooks">
+  <div class="header">
+    Old Book Section
+  </div>
+  <div class="book-container">
+    <div class="book" onclick="openBuyPage('Physics', 250)">
+      <img src="phy3.jpeg" alt="Physics">
+      <h4>Mathematics2024</h4><p>dinesh yadav</p><p class="price">&#8377;250</p>
+    </div>
+    <div class="book" onclick="openBuyPage('maths', 300)">
+      <img src="mtg.jpg" alt="maths">
+      <h4>Old Book 2</h4><p>rahul mali</p><p class="price">&#8377;300</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function openBuyPage(title, price) {
+    const url = `buy.html?title=${encodeURIComponent(title)}&price=${price}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>

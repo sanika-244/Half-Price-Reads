@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Half Price Reads</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+      width: 300px;
+      text-align: center;
+    }
+    h2 {
+      color: red;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid red;
+      border-radius: 5px;
+      background-color: #222;
+      color: white;
+    }
+    .forgot-password {
+      color: red;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #ff416c, #ff4b2b);
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .login-btn:hover {
+      background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    }
+    .otp-btn {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid red;
+      border-radius: 5px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Log in</h2>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Mobile/Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <a href="#" class="forgot-password">Forgot your Password?</a>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault(); 
+      window.location.href = "homepage.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Book</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .header {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .back-button {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .book-info { text-align: center; padding: 20px; }
+    .form-container { padding: 20px; width: 80%; max-width: 400px; margin: 0 auto; }
+    .form-container input, .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .form-container button {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Book Details -->
+<div class="header">
+  <a href="homepage.html" class="back-button">&#8592; Back</a>
+  Buy Book
+</div>
+
+<div class="book-info">
+  <h2 id="book-title"></h2>
+  <p id="book-price"></p>
+  <p id="book-author"></p>
+</div>
+
+<!-- Form to Collect Shipping Information -->
+<div class="form-container">
+  <h3>Enter Your Shipping Information</h3>
+  <form id="buy-form" onsubmit="submitForm(event)">
+    <button type="button" onclick="addToWishlist()">Add to Wishlist</button>
+
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="address" placeholder="Shipping Address" required />
+    <input type="text" id="phone" placeholder="Phone Number" required />
+    <textarea id="note" placeholder="Additional Notes (optional)"></textarea>
+    <button type="submit">Buy Now</button>
+  </form>
+</div>
+
+<!--script>
+  // Extract book info from the URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const title = params.get('title');
+  const price = params.get('price');
+
+  // Display the book details
+  document.getElementById('book-title').textContent = title;
+  document.getElementById('book-price').textContent = `Price: ₹${price}`;
+  document.getElementById('book-author').textContent = `Author: ${params.get('author') || "Unknown"}`;
+
+  // Handle form submission
+  function submitForm(event) {
+    event.preventDefault();
+
+    // Collect form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const note = document.getElementById('note').value;
+
+    // Send the data to the server or handle it (this is where you can process the order)
+    alert(`Order placed for ${name}\nTotal Price: ₹${price}\nAddress: ${address}\nPhone: ${phone}\nNote: ${note}`);
+
+    // Redirect to a confirmation page or show a success message
+    window.location.href = "thanks.html";  // Redirect to a thank you page
+  }
+</script////////
+<script>
+  // Extract book info from the URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const title = params.get('title');
+  const price = params.get('price');
+
+  // Display the book details
+  document.getElementById('book-title').textContent = title;
+  document.getElementById('book-price').textContent = `Price: ₹${price}`;
+  document.getElementById('book-author').textContent = `Author: ${params.get('author') || "Unknown"}`;
+
+  // Handle Buy form submission
+  function submitForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const note = document.getElementById('note').value;
+
+    // Save purchase to localStorage
+    let userData = JSON.parse(localStorage.getItem("userData")) || {
+      name: name,
+      booksBought: []
+    };
+
+    // Check if book already bought, then increase quantity
+    const existingBook = userData.booksBought.find(book => book.title === title);
+    if (existingBook) {
+      existingBook.quantity += 1;
+    } else {
+      userData.booksBought.push({ title: title, quantity: 1 });
+    }
+
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    alert(`Order placed for ${name}\nTitle: ${title}\nTotal Price: ₹${price}\nAddress: ${address}\nPhone: ${phone}\nNote: ${note}`);
+    window.location.href = "thanks.html";
+  }
+
+  // Handle Add to Wishlist button click
+  function addToWishlist() {
+    let wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+
+    if (!wishlist.includes(title)) {
+      wishlist.push(title);
+      localStorage.setItem("wishlistBooks", JSON.stringify(wishlist));
+      alert(`"${title}" has been added to your wishlist!`);
+    } else {
+      alert(`"${title}" is already in your wishlist.`);
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Book</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .header {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .back-button {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .book-info { text-align: center; padding: 20px; }
+    .form-container {
+      padding: 20px;
+      width: 80%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+    .form-container button {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .wishlist-button {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <a href="homepage.html" class="back-button">&#8592; Back</a>
+  Buy Book
+</div>
+
+<div class="book-info">
+  <h2 id="book-title"></h2>
+  <p id="book-price"></p>
+  <p id="book-author"></p>
+</div>
+
+<div class="form-container">
+  <h3>Enter Your Shipping Information</h3>
+  <form id="buy-form" onsubmit="submitForm(event)">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="address" placeholder="Shipping Address" required />
+    <input type="text" id="phone" placeholder="Phone Number" required />
+    <textarea id="note" placeholder="Additional Notes (optional)"></textarea>
+    <button type="submit">Buy Now</button>
+    <button type="button" class="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
+  </form>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const title = params.get('title');
+  const price = params.get('price');
+  const author = params.get('author') || "Unknown";
+
+  document.getElementById('book-title').textContent = title;
+  document.getElementById('book-price').textContent = `Price: ₹${price}`;
+  document.getElementById('book-author').textContent = `Author: ${author}`;
+
+  function submitForm(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const note = document.getElementById('note').value;
+
+    let userData = JSON.parse(localStorage.getItem("userData")) || {
+      name: name,
+      booksBought: []
+    };
+
+    const existingBook = userData.booksBought.find(book => book.title === title);
+    if (existingBook) {
+      existingBook.quantity += 1;
+    } else {
+      userData.booksBought.push({ title: title, quantity: 1 });
+    }
+
+    localStorage.setItem("userData", JSON.stringify(userData));
+
+    alert(`Order placed for ${name}\nTitle: ${title}\nTotal Price: ₹${price}\nAddress: ${address}\nPhone: ${phone}\nNote: ${note}`);
+    window.location.href = "thanks.html";
+  }
+
+  function addToWishlist() {
+    let wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+
+    if (!wishlist.includes(title)) {
+      wishlist.push(title);
+      localStorage.setItem("wishlistBooks", JSON.stringify(wishlist));
+      alert(`"${title}" has been added to your wishlist!`);
+    } else {
+      alert(`"${title}" is already in your wishlist.`);
+    }
+  }
+</script>
+
+</body>
+</html-->
+
+<!-- Save this as buy.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Book</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .header { background-color: red; color: white; padding: 10px; text-align: center; font-size: 20px; }
+    .back-button { position: absolute; left: 10px; top: 10px; color: white; text-decoration: none; font-size: 16px; }
+    .book-info { text-align: center; padding: 20px; }
+    .form-container { padding: 20px; width: 80%; max-width: 400px; margin: 0 auto; }
+    .form-container input, .form-container textarea {
+      width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; font-size: 16px;
+    }
+    .form-container button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    #buy-now { background-color: green; color: white; }
+    #wishlist-button { background-color: orange; color: white; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <a href="homepage.html" class="back-button">&#8592; Back</a>
+  Buy Book
+</div>
+
+<div class="book-info">
+  <h2 id="book-title"></h2>
+  <p id="book-price"></p>
+  <p id="book-author"></p>
+</div>
+
+<div class="form-container">
+  <form id="buy-form" onsubmit="submitForm(event)">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="address" placeholder="Shipping Address" required />
+    <input type="text" id="phone" placeholder="Phone Number" required />
+    <textarea id="note" placeholder="Additional Notes (optional)"></textarea>
+    <button type="submit" id="buy-now">Buy Now</button>
+    <button type="button" id="wishlist-button" onclick="addToWishlist()">Add to Wishlist</button>
+  </form>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const title = params.get("title");
+  const author = params.get("author") || "Unknown";
+  const price = params.get("price");
+
+  document.getElementById("book-title").textContent = title;
+  document.getElementById("book-price").textContent = `Price: ₹${price}`;
+  document.getElementById("book-author").textContent = `Author: ${author}`;
+
+  function addToWishlist() {
+    const wishlist = JSON.parse(localStorage.getItem("wishlistBooks")) || [];
+
+    const alreadyExists = wishlist.some(book => book.title === title);
+    if (!alreadyExists) {
+      wishlist.push({ title, author, price });
+      localStorage.setItem("wishlistBooks", JSON.stringify(wishlist));
+      alert(`"${title}" added to your wishlist.`);
+    } else {
+      alert(`"${title}" is already in your wishlist.`);
+    }
+  }
+
+  function submitForm(event) {
+    event.preventDefault();
+    alert("Simulated purchase. Redirecting...");
+    window.location.href = "thanks.html";
+  }
+</script>
+
+</body>
+</html>
